@@ -13,6 +13,7 @@ vector<int> twoSum(vector<int>& nums, int target)
                 return {i,j};
         }
     }
+
     return {};      //return empty vector if not found
 }
 
@@ -28,8 +29,8 @@ bool isPalindrome(int x)
             y=y*10+x%10;        //"append" the last digit of the number
             x/=10;              //remove the last digit
         }
-        return (t==y);
 
+        return (t==y);
     }
 }
 
@@ -63,6 +64,7 @@ int romanToInt(string s)
             break;
         }
     }
+
     return result;
 }
 
@@ -89,7 +91,8 @@ string longestCommonPrefix(vector<string>& strs)
     return com;
 }
 
-bool isValid(string s) {
+bool isValid(string s)
+{
     vector<char> v={};
     for(const auto &c:s)
     {
@@ -107,8 +110,29 @@ bool isValid(string s) {
         }
 
     }
+
     return v.empty();       //if vector is empty, all brackets were correct
 }
+
+int removeElement(vector<int>& nums, int val)
+{
+    short int k=0;
+
+    for(auto i=nums.begin();i!=nums.end();)
+    {
+        if(*i==val)         //remove value
+        {
+            nums.erase(i);
+            continue;       //because of how "erase" works, next value will be in the same position
+        }
+        k++;
+        i++;        //only increase position if no element was erased
+    }
+
+    return k;
+}
+
+
 
 int main()
 {
