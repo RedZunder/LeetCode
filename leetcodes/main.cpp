@@ -3,38 +3,40 @@
 
 using namespace std;
 
-vector<int> twoSum(vector<int>& nums, int target) {
-    for(int i=0;i<nums.size();i++)
+vector<int> twoSum(vector<int>& nums, int target)
+{
+    for(int i=0;i<nums.size();i++)      //loop through the vector
     {
         for(int j=i+1;j<nums.size();j++)
         {
-            if(nums[j]==target-nums[i])
+            if(nums[j]==target-nums[i])     //if the sum of both numbers equals the target number
                 return {i,j};
-
         }
     }
-    return {};
+    return {};      //return empty vector if not found
 }
 
-bool isPalindrome(int x) {
-    if(x<0)
+bool isPalindrome(int x)
+{
+    if(x<0)         //negative numbers are not palindromes
         return false;
     else
     {
         unsigned int y=0,t=x;
         while(x)
         {
-            y=y*10+x%10;
-            x/=10;
+            y=y*10+x%10;        //"append" the last digit of the number
+            x/=10;              //remove the last digit
         }
         return (t==y);
 
     }
 }
 
-int romanToInt(string s) {
+int romanToInt(string s)
+{
     int result=0;
-    for(int i=0;i<s.length();i++)
+    for(int i=0;i<s.length();i++)       //loop through the characters of the string
     {
         switch(int(s[i]))
         {
@@ -64,20 +66,23 @@ int romanToInt(string s) {
     return result;
 }
 
-string longestCommonPrefix(vector<string>& strs) {
-    string com="";
-    short int cont=0;
-    char x=strs[0][cont];
-    while(x)
+string longestCommonPrefix(vector<string>& strs)
+{
+    string com="";      //empty common prefix
+    short int cont=0;       //letter counter
+    char x=strs[0][0];   //first letter of first word
+
+    while(x)        //loop through the characters of the first word
     {
-        for(const auto &w:strs)
+        for(const auto &w:strs)     //loop through the strings
         {
-            if(w[cont]!=x)
-                return com;
+            if(w[cont]!=x)      //if the letter at this position is not the same in all words
+                return com;     //return common prefix
         }
-        com+=x;
+        com+=x;         //for loop finished, so the letter is in all words, so save the letter
         cont++;
-        x=strs[0][cont];
+        x=strs[0][cont];    //next letter. It doesn't matter which word we take it from,
+                            //since they must all be the same
 
     }
 
