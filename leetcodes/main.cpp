@@ -32,6 +32,38 @@ bool isPalindrome(int x) {
     }
 }
 
+int romanToInt(string s) {
+    int result=0;
+    for(int i=0;i<s.length();i++)
+    {
+        switch(int(s[i]))
+        {
+        case 67:    //C
+            result+=(s[i+1]=='D'||s[i+1]=='M')?-100:100;
+            break;
+        case 68:    //D
+            result+=500;
+            break;
+        case 73:    //I
+            result+=(s[i+1]=='X'||s[i+1]=='V')?-1:1;
+            break;
+        case 76:    //L
+            result+=50;
+            break;
+        case 77:    //M
+            result+=1000;
+            break;
+        case 86:    //V
+            result+=5;
+            break;
+        case 88:    //X
+            result+=(s[i+1]=='C'||s[i+1]=='L')?-10:10;
+            break;
+        }
+    }
+    return result;
+}
+
 
 int main()
 {
