@@ -89,6 +89,27 @@ string longestCommonPrefix(vector<string>& strs)
     return com;
 }
 
+bool isValid(string s) {
+    vector<char> v={};
+    for(const auto &c:s)
+    {
+        if (c == '(' || c == '{' || c == '[')
+            v.emplace_back(c);         // push to the vector
+        else
+        {
+            // if the character is a closing bracket and last character is not the corresponding one
+            if (v.empty() || (c == ')' && v.back() != '(') || (c == '}' && v.back() != '{') ||
+                (c == ']' && v.back() != '['))
+            {
+                return false;           // the string is not valid, so return false
+            }
+            v.pop_back();              // otherwise, remove the opening bracket from the vector
+        }
+
+    }
+    return v.empty();       //if vector is empty, all brackets were correct
+}
+
 int main()
 {
     cout << "Hello World!" << endl;
