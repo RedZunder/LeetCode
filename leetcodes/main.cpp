@@ -64,6 +64,25 @@ int romanToInt(string s) {
     return result;
 }
 
+string longestCommonPrefix(vector<string>& strs) {
+    string com="";
+    short int cont=0;
+    char x=strs[0][cont];
+    while(x)
+    {
+        for(const auto &w:strs)
+        {
+            if(w[cont]!=x)
+                return com;
+        }
+        com+=x;
+        cont++;
+        x=strs[0][cont];
+
+    }
+
+    return com;
+}
 
 int main()
 {
